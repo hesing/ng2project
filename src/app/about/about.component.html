@@ -1,5 +1,11 @@
-<div class="container-flhid">
-    <p>
-        about works!
-    </p>
+<div class="container-fluid">
+    <div class="row" *ngIf="users">
+        <div class="col-sm-4" *ngFor="let user of users">
+            <div class="profile-card" [routerLink]="['/about', user.username]">
+                <img [src]="user.avatar" class="img-fluid img-thumbnail">
+                <h2>{{ user.name }}</h2>
+                <p><a href="#">{{ user.username }}</a></p>
+            </div>
+        </div>
+    </div>
 </div>

@@ -11,7 +11,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: AboutComponent
+        component: AboutComponent,
+        data: {
+          message: "I am resolved data"
+        }
       },
       {
         path: ':username',

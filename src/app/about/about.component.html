@@ -1,4 +1,6 @@
 <div class="container-fluid">
+	<h1>About/About User 	<small>Self contained module</small>
+</h1>
     <div class="row" *ngIf="users">
         <div class="col-sm-4" *ngFor="let user of users">
             <div class="profile-card" [routerLink]="['/about', user.username]">

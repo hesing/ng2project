@@ -4,9 +4,9 @@ import { User } from '../models/user';
 const usersPromise: Promise<User[]> = Promise.resolve([
   {
     id: 1,
-    name: 'Chris',
-    username: 'sevilayha',
-    avatar: 'https://pbs.twimg.com/profile_images/422816823302561793/Hg3LD8K7_400x400.jpeg'
+    name: 'Hemant',
+    username: 'hemantajax',
+    avatar: 'https://avatars0.githubusercontent.com/u/13429969?v=3&s=460'
   },
   {
     id: 2,

@@ -6,7 +6,7 @@ import { AboutSectionComponent } from './about-section.component';
 
 const routes: Routes = [
   {
-    path: 'about',
+    path: '',
     component: AboutSectionComponent,
     children: [
       {

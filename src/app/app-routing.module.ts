@@ -20,6 +20,10 @@ const routes: Routes = [
     component: ContactComponent,
   },
   {
+    path: 'about',
+    loadChildren: 'app/about/about.module#AboutModule'
+  },
+  {
     path: '**',
     component: 	NotFoundComponent
   }

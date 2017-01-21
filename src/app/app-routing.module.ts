@@ -20,6 +20,10 @@ const routes: Routes = [
     component: ContactComponent,
   },
   {
+    path: 'dashboard',
+    loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule'
+  },
+  {
     path: 'about',
     loadChildren: 'app/about/about.module#AboutModule'
   },

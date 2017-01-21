@@ -14,7 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppComponent,
     HomeComponent,
     ContactComponent,
-    NotFoundComponent
+    NotFoundComponent  
   ],
   imports: [
     BrowserModule,

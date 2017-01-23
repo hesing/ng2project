@@ -13,7 +13,7 @@ export class DemoComponent implements OnInit {
 
   ngOnInit() {
   	this.demoService.getUsers()
-  		.subscribe(resData => this.users = resData.json().data);
+  		.subscribe(resData => this.users = resData);
   }
 
 }

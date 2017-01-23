@@ -16,6 +16,10 @@ export class UsersService {
 	}
 
 	// Get single user
+	getUser(id): Observable<User>{
+		return this.http.get(`${this.usersUrl}/${id}`)
+				.map(res => res.json().data);
+	}
 
 	// Create a user
 

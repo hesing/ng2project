@@ -1,0 +1,13 @@
+<div class="card card-block">
+    <div class="container" *ngIf="user">
+    {{ user | json}}
+        <h1 class="display-3">Welcome Dear <strong>{{ user.first_name }}</strong></h1>
+        <div class="media">
+            <img class="d-flex mr-3" [src]="user.avatar" alt="{{ user.first_name }}">
+            <div class="media-body">
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur saepe est consectetur expedita vitae delectus corporis cumque, doloribus molestiae vel. Beatae eius minima at voluptates nulla iste ipsum sequi cumque?</p>
+            </div>
+        </div>
+    </div>
+</div>

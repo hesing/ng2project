@@ -30,6 +30,10 @@ const routes: Routes = [
     loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule'
   },
   {
+    path: 'users',
+    loadChildren: 'app/pages/users/users.module#UsersModule'
+  },
+  {
     path: 'demo',
     loadChildren: 'app/pages/demo/demo.module#DemoModule'
   },

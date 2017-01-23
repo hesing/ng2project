@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { User } from '../../shared/models/user';
 
 @Injectable()
-export class DemoService {
+export class UsersService {
 	private usersUrl:string = 'https://reqres.in/api/users';
 	constructor(private http: Http) {}
 

@@ -16,7 +16,7 @@ import { CanDeactivateGuard } from './shared/guards/can-deactivate-guard.service
     AppComponent,
     HomeComponent,
     ContactComponent,
-    NotFoundComponent  
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

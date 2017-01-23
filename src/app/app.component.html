@@ -1,5 +1,5 @@
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
-    <a class="navbar-brand" href="#">Navbar <i class="ti-menu toggle-nav"></i></a>
+    <a class="navbar-brand" href="" (click)="false">Navbar <i class="ti-menu toggle-nav" (click)="toggleSidebar=!toggleSidebar"></i></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active">
@@ -22,13 +22,16 @@
     </div>
 </nav>
 <div id="wrapper">
-    <aside class="sidebar">
+    <aside class="sidebar" [class.toggled]="toggleSidebar">
         <div class="sidebar-inner">
             <ul class="menu">
                 <li routerLinkActive="active">
+                    <a [routerLink]="['/demo']">Demo</a>
+                </li>
+                <li routerLinkActive="active">
                     <a [routerLink]="['/dashboard']">Dashboard</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href=''>About</a>
                 </li>
                 <li>

@@ -21,13 +21,17 @@ const routes: Routes = [
     component: ContactComponent,
   },
   {
+    path: 'about',
+    loadChildren: 'app/about/about.module#AboutModule'
+  },
+  {
     path: 'dashboard',
     canActivate: [ AuthGuard ],
     loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule'
   },
   {
-    path: 'about',
-    loadChildren: 'app/about/about.module#AboutModule'
+    path: 'demo',
+    loadChildren: 'app/pages/demo/demo.module#DemoModule'
   },
   {
     path: '**',

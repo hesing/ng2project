@@ -1,0 +1,19 @@
+<div class="container" *ngIf="user">
+	<h2 class="my-2">Edit User <strong>{{ user.name }}</strong></h2>
+	{{ user | json }}
+    <form (ngSubmit)="updateUser(user)">
+        <div class="form-group row">
+            <label for="name" class="col-3 col-form-label">Name</label>
+            <div class="col-9">
+                <input class="form-control" type="text" id="name" name="name" [(ngModel)]="user.name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="username" class="col-3 col-form-label">Username</label>
+            <div class="col-9">
+                <input class="form-control" type="text" id="username" name="username" [(ngModel)]="user.username">
+            </div>
+        </div>
+        <button class="btn btn-outline-primary" type="submit">Update User</button>
+    </form>
+</div>

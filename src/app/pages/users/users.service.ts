@@ -36,6 +36,11 @@ export class UsersService {
 	// Create a user
 
 	// Update a user
+	updateUser(user:User): Observable<User>{
+		return this.http.put(`${this.usersUrl}/${user.id}`, user)
+				.map(res => res.json().data)
+				.map(this.mapUser);
+	}
 
 	// Delete a user
 }

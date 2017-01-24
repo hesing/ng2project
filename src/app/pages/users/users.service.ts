@@ -34,6 +34,10 @@ export class UsersService {
 	}
 
 	// Create a user
+	createUser(user:User): Observable<User>{
+		return this.http.post(`${this.usersUrl}`, user)
+				.map(res => res.json());
+	}
 
 	// Update a user
 	updateUser(user:User): Observable<User>{

@@ -7,6 +7,7 @@ import { UsersService } from './users.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserSingleComponent } from './user-single/user-single.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     UsersRoutingModule,
     FormsModule
   ],
-  declarations: [ UsersComponent, UserListComponent, UserSingleComponent, UserEditComponent ],
+  declarations: [ UsersComponent, UserListComponent, UserSingleComponent, UserEditComponent, UserCreateComponent ],
   providers: [ UsersService ]
 })
 export class UsersModule { }

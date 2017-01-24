@@ -1,5 +1,6 @@
 <div class="container-fluid">
-    <h1>All Users</h1>
+    <h1 class="my-2">All Users <a class="btn btn-info float-right" routerLink="/users/create">
+    <i class="ti-plus"></i> Create User</a></h1>
     <ul class="list-unstyled">
         <li class="media mb-2" *ngFor="let user of users">
             <img class="d-flex mr-3" [src]="user.avatar" alt="{{ user.name }}">

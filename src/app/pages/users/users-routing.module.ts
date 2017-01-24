@@ -4,6 +4,7 @@ import { UsersComponent } from './users.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserSingleComponent } from './user-single/user-single.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 const routes: Routes = [
 	{
@@ -14,10 +15,10 @@ const routes: Routes = [
 				path: '',
 				component: UserListComponent
 			},
-			// {
-			// 	path: 'create',
-			// 	component: UserCreateComponent
-			// },
+			{
+				path: 'create',
+				component: UserCreateComponent
+			},
 			{
 				path: ':id',
 				component: UserSingleComponent

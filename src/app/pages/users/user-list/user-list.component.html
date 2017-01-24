@@ -5,6 +5,8 @@
         <li class="media mb-2" *ngFor="let user of users">
             <img class="d-flex mr-3" [src]="user.avatar" alt="{{ user.name }}">
             <div class="media-body">
+                <button (click)="removeUser(user)" class="btn btn-danger btn-sm float-right ml-2"><i class="ti-close"></i> Delete</button>
+
                 <a [routerLink]="['/users', user.id, 'edit']" class="btn btn-primary btn-sm float-right"><i class="ti-pencil"></i> Edit</a>
                 <h5 class="mt-0 mb-1">
                 	<a [routerLink]="['/users', user.id]">{{ user.name }}</a>

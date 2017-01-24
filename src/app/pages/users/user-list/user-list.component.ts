@@ -15,4 +15,12 @@ export class UserListComponent implements OnInit {
   		.subscribe(resData => this.users = resData);
   }
 
+  removeUser(user: User){
+  	this.userService.removeUser(user)
+  		.subscribe(res => {
+  			console.log('User Deleted');
+  			this.users.splice(this.users.indexOf(user), 1);
+  		});
+  }
+
 }

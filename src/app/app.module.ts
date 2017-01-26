@@ -10,13 +10,16 @@ import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './shared/guards/auth-guard.service';
 import { CanDeactivateGuard } from './shared/guards/can-deactivate-guard.service';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ContactComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { CanDeactivateGuard } from './shared/guards/can-deactivate-guard.service
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ AuthGuard, CanDeactivateGuard ],
+  providers: [ AuthGuard, CanDeactivateGuard, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

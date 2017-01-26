@@ -12,6 +12,8 @@ export class UserCreateComponent implements OnInit {
 		username: '',
 		avatar: ''
 	};
+	successMessage: string = '';
+	errorMessage: string = '';
 
 	constructor(private route: ActivatedRoute, private userService: UsersService) {}
 
@@ -20,7 +22,7 @@ export class UserCreateComponent implements OnInit {
 	createUser(user: User){
 		this.userService.createUser(user)
 			.subscribe(resUser => {
-				console.log("User Created");
+				this.successMessage = 'User was created!';
 				this.user = resUser;
 			});
 	}

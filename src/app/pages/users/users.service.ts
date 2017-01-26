@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../shared/models/user';
@@ -7,7 +8,10 @@ import { User } from '../../shared/models/user';
 @Injectable()
 export class UsersService {
 	private usersUrl:string = 'https://reqres.in/api/users';
-	constructor(private http: Http) {}
+
+	constructor(private http: Http) {
+
+	}
 
 	// map user to desired format
 	private mapUser(user): User{
@@ -21,14 +25,22 @@ export class UsersService {
 
 	// Get all users
 	getUsers(): Observable<User[]>{
-		return this.http.get(this.usersUrl)
+		let headers = new Headers();
+		let token = localStorage.getItem('auth_token');
+		headers.append('Authorization', `Bearer ${token}`);
+
+		return this.http.get(this.usersUrl, { headers })
 				.map(res => res.json().data)
 				.map(users => users.map(this.mapUser));
 	}
 
 	// Get single user
 	getUser(id): Observable<User>{
-		return this.http.get(`${this.usersUrl}/${id}`)
+		let headers = new Headers();
+		let token = localStorage.getItem('auth_token');
+		headers.append('Authorization', `Bearer ${token}`);
+
+		return this.http.get(`${this.usersUrl}/${id}`, { headers })
 				.map(res => res.json().data)
 				.map(this.mapUser);
 	}

@@ -31,10 +31,17 @@ export class AuthService {
     return this.http.post(`${this.authUrl}/login`, {username, password})
       .map(res => res.json())
       .do(res => {
-        console.log("In tokem", res);
-        if (res.token) localStorage.setItem('auth_token', res.token);
+        if (res.token) {
+          localStorage.setItem('auth_token', res.token);
+          this.loggedIn = true;
+        }
       })
       .catch(this.handleError);
+  }
+
+  logout(){
+    localStorage.removeItem('auth_token');
+    this.loggedIn = false;
   }
 
   /**

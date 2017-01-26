@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
 		password: ''
 	};
 
-	constructor(private authService: AuthService) {}
+	constructor(private router: Router, private authService: AuthService) {}
 
 	ngOnInit() {
 		
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
 			.subscribe(
 				data => {
 					console.log(data);
+					this.router.navigate(['/users']);
 				},
 				err => {
 					console.log(err);

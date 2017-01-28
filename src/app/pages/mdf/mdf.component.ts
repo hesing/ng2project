@@ -77,6 +77,6 @@ export class MdfComponent implements OnInit {
 	}
 
 	createUser() {
-		console.log(this.userForm.value);
+		console.log(this.userForm);
 	}
 }

@@ -30,17 +30,23 @@
             </div>
         </div>
         <div class="row" formArrayName="addresses">
-            <div class="col-sm-4 mb-2" *ngFor="let address of userForm.controls.addresses.controls;let i=index;">
+            <div class="col-sm-6 col-md-4 mb-4" *ngFor="let address of userForm.controls.addresses.controls;let i=index;">
             	<div class="card">
                 <div class="card-header">
                     Address #{{ i + 1 }}
                     <button type="button" class="btn btn-danger float-right" (click)="removeAddress(i)" *ngIf="userForm.controls.addresses.controls.length > 1"><i class="ti-close"></i></button>
                 </div>
                 <div class="card-block" [formGroupName]="i">
-                    <div class="form-group row">
+                    <div class="form-group row" [class.has-danger]="userForm.controls.addresses.controls[i].controls.city.errors
+                                && userForm.controls.addresses.controls[i].controls.city.dirty">
                         <label for="name" class="col-3 col-form-label form-control-label">City</label>
                         <div class="col-9">
-                            <input class="form-control" type="text" id="name" name="name" formControlName="city">
+                            <input class="form-control" type="text" id="name" name="name" required formControlName="city">
+                            <div class="form-contrusernameol-feedback text-danger" 
+                            	*ngIf="userForm.controls.addresses.controls[i].controls.city.errors
+                                && userForm.controls.addresses.controls[i].controls.city.dirty">
+                            	City {{ i + 1 }} is required
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">

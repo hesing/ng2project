@@ -18,7 +18,7 @@
             <label for="name" class="col-3 col-form-label form-control-label">Name</label>
             <div class="col-9">
                 <input class="form-control" type="text" id="name" name="name" required formControlName="name">
-                <div class="form-control-feedback" *ngIf="nameError">Name is required</div>
+                <div class="form-control-feedback" *ngIf="nameError">{{ nameError }}</div>
             </div>
         </div>
         <div class="form-group row" [ngClass]="{
@@ -27,7 +27,7 @@
             <label for="username" class="col-3 col-form-label">Username</label>
             <div class="col-9">
                 <input class="form-control" type="text" id="username" name="username" required formControlName="username">
-                <div class="form-control-feedback" *ngIf="usernameError">Username is required</div>
+                <div class="form-control-feedback" *ngIf="usernameError">{{ usernameError }}</div>
             </div>
         </div>
         <div class="form-group row">

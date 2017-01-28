@@ -10,13 +10,14 @@
         </div>
     </div>
     
-    <form (ngSubmit)="createUser(user)" *ngIf="!isSubmitted">
+    <form (ngSubmit)="createUser(user)" *ngIf="!isSubmitted" novalidate>
         {{ user | json }}
         <div class="form-group row">
             <label for="name" class="col-3 col-form-label">Name</label>
             <div class="col-9">
-                <input class="form-control" type="text" id="name" name="name" [(ngModel)]="user.name">
+                <input class="form-control" type="text" id="name" name="name" #name [(ngModel)]="user.name" required>
             </div>
+            <p class="card card-block card-outline-info my-2">{{ name.className }}</p>
         </div>
         <div class="form-group row">
             <label for="username" class="col-3 col-form-label">Username</label>

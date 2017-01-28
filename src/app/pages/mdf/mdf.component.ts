@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
 	selector: 'app-mdf',
@@ -55,6 +55,21 @@ export class MdfComponent implements OnInit {
 
 		this.userForm.valueChanges
 			.subscribe(res => this.validateForm());
+	}
+
+	addAddress(){
+		let addresses = <FormArray>this.userForm.get('addresses');
+		addresses.push(
+			this.fb.group({
+				city: [''],
+				country: [''] 
+			})
+		);
+	}
+
+	removeAddress(i){
+		let addresses = <FormArray>this.userForm.get('addresses');
+		addresses.removeAt(i);
 	}
 
 	ngOnInit() {

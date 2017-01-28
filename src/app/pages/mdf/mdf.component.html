@@ -9,9 +9,8 @@
             </button>
         </div>
     </div>
-    
     <form novalidate (ngSubmit)="createUser()" [formGroup]="userForm">
-    	{{ userForm.value | json }}
+        {{ userForm.value | json }}
         <div class="form-group row" [ngClass]="{
 			'has-danger': formErrors.name
         }">
@@ -30,26 +29,34 @@
                 <div class="form-control-feedback" *ngIf="formErrors.username">{{ formErrors.username }}</div>
             </div>
         </div>
-        <div class="form-group row" formArrayName="addresses">
-			<div class="card" *ngFor="let address of userForm.controls.addresses.controls;let i=index;">
-			  <div class="card-header">
-			    Address #{{ i + 1 }} 
-			  </div>
-			  <div class="card-block" [formGroupName]="i">
-		        <div class="form-group row">
-		            <label for="name" class="col-3 col-form-label form-control-label">City</label>
-		            <div class="col-9">
-		                <input class="form-control" type="text" id="name" name="name" formControlName="city">
-		            </div>
-		        </div>
-		        <div class="form-group row">
-		            <label for="name" class="col-3 col-form-label form-control-label">Country</label>
-		            <div class="col-9">
-		                <input class="form-control" type="text" id="name" name="name" formControlName="country">
-		            </div>
-		        </div>
-			  </div>
-			</div>
+        <div class="row" formArrayName="addresses">
+            <div class="col-sm-4 mb-2" *ngFor="let address of userForm.controls.addresses.controls;let i=index;">
+            	<div class="card">
+                <div class="card-header">
+                    Address #{{ i + 1 }}
+                    <button type="button" class="btn btn-danger float-right" (click)="removeAddress(i)" *ngIf="userForm.controls.addresses.controls.length > 1"><i class="ti-close"></i></button>
+                </div>
+                <div class="card-block" [formGroupName]="i">
+                    <div class="form-group row">
+                        <label for="name" class="col-3 col-form-label form-control-label">City</label>
+                        <div class="col-9">
+                            <input class="form-control" type="text" id="name" name="name" formControlName="city">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-3 col-form-label form-control-label">Country</label>
+                        <div class="col-9">
+                            <input class="form-control" type="text" id="name" name="name" formControlName="country">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-secondary float-right" (click)="addAddress()"><i class="ti-plus"></i> Add Address</button>
+            </div>
         </div>
         <div class="form-group row">
             <div class="offset-sm-3 col-sm-9">

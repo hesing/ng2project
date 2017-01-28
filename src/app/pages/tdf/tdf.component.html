@@ -10,8 +10,8 @@
         </div>
     </div>
     
-    <form (ngSubmit)="createUser(user)" *ngIf="!isSubmitted" novalidate>
-        {{ user | json }}
+    <form novalidate (ngSubmit)="createUser(user)" *ngIf="!isSubmitted" #userForm="ngForm">
+    {{ userForm.value | json }}
         <div class="form-group row" [ngClass]="{ 
             'has-success': name.dirty && name.valid,
             'has-danger': name.dirty && name.invalid
@@ -23,15 +23,20 @@
                 <div class="form-control-feedback" *ngIf="name.dirty && name.invalid">Name is required</div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" [ngClass]="{ 
+            'has-success': username.dirty && username.valid,
+            'has-danger': username.dirty && username.invalid
+            }">
             <label for="username" class="col-3 col-form-label">Username</label>
             <div class="col-9">
-                <input class="form-control" type="text" id="username" name="username" [(ngModel)]="user.username">
+                <input class="form-control" type="text" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" required>
+                <div class="form-control-feedback" *ngIf="username.dirty && username.valid">Success! You've done it.</div>
+                <div class="form-control-feedback" *ngIf="username.dirty && username.invalid">Username is required</div>
             </div>
         </div>
         <div class="form-group row">
             <div class="offset-sm-3 col-sm-9">
-                <button class="btn btn-outline-primary" type="submit">Create User</button>
+                <button class="btn btn-outline-primary" type="submit" [disabled]="userForm.invalid">Create User</button>
             </div>
         </div>
     </form>

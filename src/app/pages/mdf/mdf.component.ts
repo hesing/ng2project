@@ -11,7 +11,10 @@ export class MdfComponent implements OnInit {
 
 	formErrors = {
 		name: '',
-		username: ''
+		username: '',
+		addresses: [
+			{ city: '', country: '' }
+		]
 	};
 
 	validationMessages = {
@@ -22,13 +25,66 @@ export class MdfComponent implements OnInit {
 		},
 		username: {
 			required: 'Username is required'
+		},
+		addresses: {
+			city: {
+				required: 'City is required.',
+				minlength: 'City must be 3 characters.'
+			},
+			country: {
+				required: 'Country is required.'
+			}
 		}
 	};
 
 	constructor(private fb: FormBuilder) { }
 
+	/**
+	 * validate the addresses formarray
+	 */
+	validateAddresses() {
+		// grab the addresses formarray
+		let addresses = <FormArray>this.userForm.get('addresses');
+
+		// clear the form errors
+		this.formErrors.addresses = [];
+
+		// loop through however many formgroups are in the formarray
+		let n = 1;
+		while (n <= addresses.length) {
+
+			// add the clear errors back
+			this.formErrors.addresses.push({ city: '', country: '' });
+
+			// grab the specific group (address)
+			let address = <FormGroup>addresses.at(n - 1);
+
+			// validate that specific group. loop through the groups controls
+			for (let field in address.controls) {
+				// get the formcontrol
+				let input = address.get(field);
+
+				// do the validation and save errors to formerrors if necessary 
+				if (input.invalid && input.dirty) {
+					for (let error in input.errors) {
+						this.formErrors.addresses[n - 1][field] = this.validationMessages.addresses[field][error];
+					}
+				}
+			}
+
+			n++;
+		}
+	}
+
+	createAddress() {
+		return this.fb.group({
+			city: ['', Validators.minLength(3)],
+			country: ['']
+		});
+	}
+	
 	validateForm() {
-		for(let field in this.formErrors){
+		for (let field in this.formErrors) {
 			this.formErrors[field] = '';
 
 			let input = this.userForm.get(field);
@@ -39,6 +95,8 @@ export class MdfComponent implements OnInit {
 				}
 			}
 		}
+
+		this.validateAddresses();
 	}
 
 	buildForm() {
@@ -46,28 +104,20 @@ export class MdfComponent implements OnInit {
 			name: ['', [Validators.minLength(3), Validators.maxLength(6)]],
 			username: [''],
 			addresses: this.fb.array([
-					this.fb.group({
-						city: [''],
-						country: [''] 
-					})
-				])
+				this.createAddress()
+			])
 		});
 
 		this.userForm.valueChanges
 			.subscribe(res => this.validateForm());
 	}
 
-	addAddress(){
+	addAddress() {
 		let addresses = <FormArray>this.userForm.get('addresses');
-		addresses.push(
-			this.fb.group({
-				city: [''],
-				country: [''] 
-			})
-		);
+		addresses.push(this.createAddress());
 	}
 
-	removeAddress(i){
+	removeAddress(i) {
 		let addresses = <FormArray>this.userForm.get('addresses');
 		addresses.removeAt(i);
 	}

@@ -7,6 +7,7 @@ import { User } from '../../shared/models/user';
   styleUrls: ['./tdf.component.scss']
 })
 export class TdfComponent implements OnInit {
+  isSubmitted: boolean = false;
   user: User = {
     name: '',
     username: ''  
@@ -19,5 +20,6 @@ export class TdfComponent implements OnInit {
 
   createUser(){
   	console.log(this.user);
+    this.isSubmitted = true;
   }
 }

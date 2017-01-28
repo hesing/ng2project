@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-mdf',
   templateUrl: './mdf.component.html',
@@ -8,12 +8,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class MdfComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-  	this.userForm = new FormGroup({
-  		name: new FormControl(''),
-  		username: new FormControl('')
+  	this.userForm = this.fb.group({
+  		name: [''],
+  		username: ['']
   	});
   }
 

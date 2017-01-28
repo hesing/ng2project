@@ -13,21 +13,21 @@
     <form novalidate (ngSubmit)="createUser()" [formGroup]="userForm">
     	{{ userForm.value | json }}
         <div class="form-group row" [ngClass]="{
-			'has-danger': nameError
+			'has-danger': formErrors.name
         }">
             <label for="name" class="col-3 col-form-label form-control-label">Name</label>
             <div class="col-9">
                 <input class="form-control" type="text" id="name" name="name" required formControlName="name">
-                <div class="form-control-feedback" *ngIf="nameError">{{ nameError }}</div>
+                <div class="form-control-feedback" *ngIf="formErrors.name">{{ formErrors.name }}</div>
             </div>
         </div>
         <div class="form-group row" [ngClass]="{
-			'has-danger': usernameError
+			'has-danger': formErrors.username
         }">
             <label for="username" class="col-3 col-form-label">Username</label>
             <div class="col-9">
                 <input class="form-control" type="text" id="username" name="username" required formControlName="username">
-                <div class="form-control-feedback" *ngIf="usernameError">{{ usernameError }}</div>
+                <div class="form-control-feedback" *ngIf="formErrors.username">{{ formErrors.username }}</div>
             </div>
         </div>
         <div class="form-group row">

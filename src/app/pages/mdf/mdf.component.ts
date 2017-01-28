@@ -8,25 +8,36 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class MdfComponent implements OnInit {
 	userForm: FormGroup;
-	nameError: string = '';
-	usernameError: string = '';
+
+	formErrors = {
+		name: '',
+		username: ''
+	};
+
+	validationMessages = {
+		name: {
+			required: 'Name is required',
+			minlength: 'Name must be at least 3 characters',
+			maxlength: 'Name can\'t be more than 6 characters'
+		},
+		username: {
+			required: 'Username is required'
+		}
+	};
 
 	constructor(private fb: FormBuilder) { }
 
 	validateForm() {
-		this.nameError = '';
-		this.usernameError = '';
-		let name = this.userForm.get('name');
-		let username = this.userForm.get('username');
+		for(let field in this.formErrors){
+			this.formErrors[field] = '';
 
-		if (name.dirty && name.invalid) {
-			if (name.errors['required']) this.nameError = 'Name is required.';
-			if (name.errors['minlength']) this.nameError = 'Name must be at least 3 characters.';
-			if (name.errors['maxlength']) this.nameError = 'Name can\'t be more than 6 characters.';
-		}
+			let input = this.userForm.get(field);
 
-		if (username.dirty && username.invalid) {
-			this.usernameError = 'Username is required';
+			if (input.dirty && input.invalid) {
+				for (let error in input.errors) {
+					this.formErrors[field] = this.validationMessages[field][error];
+				}
+			}
 		}
 	}
 

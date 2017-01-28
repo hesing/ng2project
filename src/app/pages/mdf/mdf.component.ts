@@ -44,7 +44,13 @@ export class MdfComponent implements OnInit {
 	buildForm() {
 		this.userForm = this.fb.group({
 			name: ['', [Validators.minLength(3), Validators.maxLength(6)]],
-			username: ['']
+			username: [''],
+			addresses: this.fb.array([
+					this.fb.group({
+						city: [''],
+						country: [''] 
+					})
+				])
 		});
 
 		this.userForm.valueChanges

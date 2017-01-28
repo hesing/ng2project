@@ -39,6 +39,10 @@ const routes: Routes = [
     loadChildren: 'app/pages/users/users.module#UsersModule'
   },
   {
+    path: 'tdf',
+    loadChildren: 'app/pages/tdf/tdf.module#TdfModule'
+  },
+  {
     path: 'demo',
     loadChildren: 'app/pages/demo/demo.module#DemoModule'
   },

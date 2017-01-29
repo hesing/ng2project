@@ -9,7 +9,7 @@
 
                 <a [routerLink]="['/users', user.id, 'edit']" class="btn btn-primary btn-sm float-right"><i class="ti-pencil"></i> Edit</a>
                 <h5 class="mt-0 mb-1">
-                	<a [routerLink]="['/users', user.id]">{{ user.name }}</a>
+                	<a [routerLink]="['/users', user.id]">{{ user.name | capitalize }}</a>
                 	</h5> 
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, exercitationem!</p>
 

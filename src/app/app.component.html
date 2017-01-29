@@ -23,7 +23,7 @@
                 <a class="nav-link" href="" (click)="logout($event)">Logout</a>
             </li>
         </ul>
-<!--         <form class="form-inline my-2 my-lg-0">
+        <!--         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form> -->
@@ -35,6 +35,22 @@
             <ul class="menu">
                 <li routerLinkActive="active">
                     <a [routerLink]="['/demo']">Demo</a>
+                </li>
+                <li class="sub-menu" [class.toggled]="toggleSubMenu">
+                    <a [routerLink]="['/ui']" (click)="toggleSubMenu=!toggleSubMenu;false">
+                        <i class="ti-angle-right menu-arrow"></i> UI Components
+                    </a>
+                    <ul class="animated" [class.fadeIn]="toggleSubMenu">
+<!--                         <li>
+                            <a [routerLink]="['/ui']">Components List</a>
+                        </li> -->
+                        <li>
+                            <a [routerLink]="['/ui/toast']">Toast</a>
+                        </li>
+                    </ul>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/ui']">UI Components</a>
                 </li>
                 <li routerLinkActive="active">
                     <a [routerLink]="['/tdf']">Template Driven Form</a>
@@ -54,11 +70,11 @@
                 <li>
                     <a href=''>Contact</a>
                 </li>
-                <li class="sub-menu">
-                    <a href="">
+                <li class="sub-menu" [class.toggled]="toggleSubMenu">
+                    <a href="" (click)="toggleSubMenu=!toggleSubMenu;false">
                         <i class="ti-angle-right menu-arrow"></i> Headers
                     </a>
-                    <ul class="animated">
+                    <ul class="animated" [class.fadeIn]="toggleSubMenu">
                         <li><a data-ng-click="mactrl.sidebarStat($event)" data-ui-sref="headers.textual-menu" data-ui-sref-active="active" class="active" href="#/headers/textual-menu">Textual menu</a></li>
                         <li><a data-ng-click="mactrl.sidebarStat($event)" data-ui-sref="headers.image-logo" data-ui-sref-active="active" href="#/headers/image-logo">Image logo</a></li>
                         <li><a data-ng-click="mactrl.sidebarStat($event)" data-ui-sref="headers.mainmenu-on-top" data-ui-sref-active="active" href="#/headers/mainmenu-on-top">Mainmenu on top</a></li>
@@ -70,7 +86,6 @@
     <div class="content">
         <!-- Page content goes here -->
         <router-outlet></router-outlet>
-
         <footer class="footer">
             <div class="container-fluid">
                 <p>Copyright &copy; 2017</p>

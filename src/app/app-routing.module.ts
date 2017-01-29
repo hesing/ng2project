@@ -51,6 +51,10 @@ const routes: Routes = [
     loadChildren: 'app/pages/demo/demo.module#DemoModule'
   },
   {
+    path: 'ui',
+    loadChildren: 'app/ui/ui.module#UiModule'
+  },
+  {
     path: '**',
     component: 	NotFoundComponent
   }

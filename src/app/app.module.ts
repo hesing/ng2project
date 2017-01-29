@@ -12,6 +12,7 @@ import { AuthGuard } from './shared/guards/auth-guard.service';
 import { CanDeactivateGuard } from './shared/guards/can-deactivate-guard.service';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './shared/services/auth.service';
+import { ToastrService } from './shared/services/toastr.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AuthService } from './shared/services/auth.service';
     HomeComponent,
     ContactComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent  
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,7 @@ import { AuthService } from './shared/services/auth.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ AuthGuard, CanDeactivateGuard, AuthService ],
+  providers: [ ToastrService, AuthGuard, CanDeactivateGuard, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

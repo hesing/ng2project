@@ -20,7 +20,7 @@ import { ToastrService } from './shared/services/toastr.service';
     HomeComponent,
     ContactComponent,
     NotFoundComponent,
-    LoginComponent  
+    LoginComponent
   ],
   imports: [
     BrowserModule,
